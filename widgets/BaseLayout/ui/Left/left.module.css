@@ -1,0 +1,34 @@
+.main{
+    display: flex;
+    height: 100%;
+    border: 0.1px solid lightgray;
+    width: 100%;
+    grid-area: aside;
+    justify-content: center;
+    align-items: center;
+
+}
+.ul{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.li{
+    display: flex;
+    width: 100%;
+    border: 1px solid lightgray;
+    justify-content: start;
+    height: 2rem;
+    align-items: center;
+    padding: 10px 20px;
+
+    &:hover{
+        background-color: lightgray;
+        color: black;
+        cursor: pointer;
+    }
+
+}
