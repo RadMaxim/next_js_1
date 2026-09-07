@@ -1,6 +1,4 @@
-import Image from "next/image";
 
-// Определяем интерфейс для params
 interface HomeParams {
   params: {
     // Укажите здесь поля, которые ожидаете получить
