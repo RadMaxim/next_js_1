@@ -1,16 +1,18 @@
+"use client"
+import {use} from "react";
 
 type  Props = {
-    data:{title:string}[]
+    result: Promise<{ title: string }[]>
 
  }
 
 
- export default  function BooksItems({data}:Props) {
-
+ export default function BooksItems({result}:Props) {
+        const res = use(result)
 
   return (
     <div >
-        {data.map((item, i) => (<div key={item.title}>{item.title}</div>))}
+        {res.map((item, i) => (<div key={item.title}>{item.title}</div>))}
     </div>
   );
 }
