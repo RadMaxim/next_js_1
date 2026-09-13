@@ -1,8 +1,7 @@
 import {Metadata} from "next";
 import BooksItems from "@/widgets/BooksItem/BooksItem";
 import {Suspense} from "react";
-import path from "node:path";
-import fs from "fs/promises";
+
 
 export const metadata: Metadata = {
     title: "all Books page",
@@ -10,26 +9,15 @@ export const metadata: Metadata = {
 };
 export const dynamic = 'force-static';
 export const revalidate = 15
-const getParsedBooks = async () => {
-    const filePath = path.join(process.cwd(),"public", "data.json");
-    try {
-        const data = await fs.readFile(filePath);
-        return JSON.parse(data.toString());
 
-    }
-    catch {
-        return []
-    }
-}
 export default async function Home() {
-    const data =await fetch('https://jsonplaceholder.typicode.com/todos')
-    console.log("smth")
-    const result:Promise<{title:string}[]> = data.json();
-    const arr = getParsedBooks()
+
+    const arr = await fetch("http://localhost:3000/api/title")
+    const todoList = await arr.json()
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
         <Suspense fallback={<>Loading....</>}>
-            <BooksItems result={arr}/>
+            <BooksItems result={todoList}/>
 
         </Suspense>
 
